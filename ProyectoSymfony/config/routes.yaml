@@ -1,0 +1,18 @@
+users:
+   path: /users
+   controller: App\Controller\UserController::users
+call:
+   path: /call/{id}
+   controller: App\Controller\UserController::call
+register:
+   path: /register
+   controller: App\Controller\UserController::register
+saveUser:
+   path: /saveUser
+   controller: App\Controller\UserController::saveUser
+   methods: POST
+login:
+   path: /
+   controller: App\Controller\UserController::login
+logout:
+   path: /logout

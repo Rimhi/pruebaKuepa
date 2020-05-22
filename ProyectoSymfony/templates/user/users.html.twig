@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registrate!{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h2>Usuarios</h2>
+    <table>
+        <tr>
+            <th>Nombres</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Llamado</th>
+            <th>Programa</th>
+            <th>Acciones</th>
+        </tr>
+        
+        {% for user in users %}
+            {% if user.role == "ROLE_USER" %}
+                <tr>
+                    <td>{{ user.name ~ " " ~ user.surname }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.calls }}</td>
+                    <td>{{ user.program.name }}</td>
+                    {% if user.calls == "no" %}
+                        <td><a href="{{path('call',{'id':user.id})}}">llamar</a></td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+       
+    </table>
+</div>
+{% endblock %}

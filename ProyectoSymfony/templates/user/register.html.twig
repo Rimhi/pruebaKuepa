@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registrate!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+
+    <h1>Te llamamos!</h1>
+    {% if(registrado==1) %}
+        <h1>Felicidades Pronto te contactaremos!</h1>
+    {% endif %} 
+    {% if(registrado==false) %}
+        <h1>Correo o telefono duplicado</h1>
+    {% endif %}
+    <form action="{{path('saveUser')}}" method="POST">
+        <p><label>Nombres: </label></p>
+        <p><input type="text" name="name"></p>
+        <p><label>Apellidos: </label></p>
+        <p><input type="text" name="surname"></p>
+        <p><label>Telefono: </label></p>
+        <p><input type="number" name="phone"></p>
+        <p><label>Email: </label></p>
+        <p><input type="email" name="email"></p>
+        <p><label>Programa: </label></p>
+        <p><select name="program_id">
+            {% for program in programs %}
+            <option value="{{program.id}}">{{ program.name }}</option>
+            {% endfor %}
+        </select></p>
+        <p><label>Contraseña: </label></p>
+        <input type="password" name="password">
+        <input type="submit">
+    </form>
+</div>
+{% endblock %}
